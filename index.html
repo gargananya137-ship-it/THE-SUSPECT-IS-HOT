@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CASE FILE: T-001</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Mono:wght@400;500&family=Special+Elite&display=swap');
+:root{--paper:#eee5d2;--paper2:#e3d6bc;--ink:#25221e;--muted:#756d61;--red:#963d39;--folder:#d6c6a5;--dark:#292824;--dark2:#37342e}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--dark);color:var(--ink);font-family:"DM Mono",monospace}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.progress{position:fixed;top:0;left:0;height:4px;background:var(--red);width:0;z-index:120}
+nav{height:62px;position:fixed;inset:0 0 auto;background:#25241fef;color:#d8ccb8;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;z-index:110;border-bottom:1px solid #4b473e}
+nav div,nav a{font-size:9px;letter-spacing:.15em;color:inherit;text-decoration:none}.hero,.section,.letter{background:var(--paper)}
+.hero{min-height:100svh;padding:115px 7vw 80px;display:grid;place-items:center;position:relative;overflow:hidden}
+.hero:before{content:"CONFIDENTIAL";position:absolute;right:-6vw;top:22%;font-size:clamp(60px,12vw,150px);color:var(--red);opacity:.07;transform:rotate(10deg)}
+.tab{position:absolute;top:62px;left:8vw;background:#cbb995;padding:11px 28px;border-radius:0 0 5px 5px;font-size:9px;letter-spacing:.15em}
+.sheet{width:min(1000px,100%)}.kicker{font-size:10px;letter-spacing:.18em;color:var(--muted);margin-bottom:20px}
+h1,h2,h3{font-family:"Special Elite";font-weight:400}h1{font-size:clamp(58px,11vw,135px);line-height:.88;margin:0}
+.subject{margin-top:45px;border-top:2px solid var(--ink);border-bottom:1px solid #a69a87;padding:18px 0;display:grid;grid-template-columns:150px 1fr;gap:9px;font-size:11px}.status{color:var(--red)}
+.stamp{display:inline-block;border:3px solid var(--red);color:var(--red);padding:9px 14px;transform:rotate(-7deg);letter-spacing:.12em;font-size:14px;margin-top:30px}
+.open{margin-top:38px;background:var(--ink);color:#f4ecdc;border:0;padding:17px 22px;cursor:pointer;font:10px "DM Mono";letter-spacing:.12em}.open:hover{background:var(--red)}
+.hand{font:21px Caveat;color:#6d5d4b}.hero-note{position:absolute;right:9%;bottom:11%;transform:rotate(-5deg)}
+.section{padding:120px 7vw;border-top:1px solid #c7b99e}.wrap{width:min(1050px,100%);margin:auto}
+.head{display:flex;justify-content:space-between;gap:35px;align-items:end;margin-bottom:55px}.head h2{font-size:clamp(40px,6vw,72px);line-height:.92;margin:8px 0}.head p{max-width:340px;font-size:11px;line-height:1.7;color:var(--muted)}
+.cases{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}.case{position:relative;background:var(--folder);padding:30px;min-height:270px;border:1px solid #b8a987;box-shadow:8px 9px 0 #b3a487;cursor:pointer;transition:.3s;overflow:hidden}.case:nth-child(2){transform:rotate(.6deg)}.case:nth-child(3){transform:rotate(-.4deg)}.case:nth-child(4){transform:rotate(.35deg)}
+.case:hover,.case.open{transform:translateY(-6px) rotate(0);box-shadow:12px 14px 0 #a99b7e}.case-num{color:var(--red);font-size:10px;letter-spacing:.15em}.case h3{font-size:27px;line-height:1.05;margin:25px 0 14px}.tease,.answer{font-size:11px;line-height:1.75;color:#5d574e}.answer{max-height:0;opacity:0;overflow:hidden;border-top:1px solid transparent;transition:.5s}.case.open .tease{display:none}.case.open .answer{max-height:240px;opacity:1;border-top-color:#b5a688;padding-top:16px;margin-top:12px}.tag{position:absolute;right:17px;bottom:15px;color:var(--red);font:16px Caveat}.note{font:18px Caveat;color:#75624e}
+.letter-section{background:var(--paper2);padding:125px 7vw}.letter-layout{display:grid;grid-template-columns:.65fr 1.35fr;gap:65px;align-items:center}.letter-intro h2{font-size:clamp(45px,6vw,78px);line-height:.92;margin:10px 0}.letter-intro p{font-size:11px;line-height:1.8;color:#625b51}
+.letter-card{position:relative;background:#f0e6d1;padding:clamp(35px,5vw,65px);box-shadow:14px 18px 0 #aa9d83;transform:rotate(-1deg)}.letter-card:after{content:"";position:absolute;top:-14px;left:42%;width:110px;height:25px;background:#c5b28e99;transform:rotate(2deg)}.letter{white-space:pre-wrap;font:24px/1.5 Caveat;position:relative;z-index:2}.margin{position:absolute;font:19px Caveat;color:#7b6955;z-index:3}.m1{top:-34px;right:10px;transform:rotate(5deg)}.m2{bottom:-34px;left:12%;transform:rotate(-4deg)}
+.dark{background:#292824;color:#eee6d8;padding:120px 7vw}.dark .kicker{color:#a79c89}.dark h2{font-size:clamp(45px,7vw,85px);line-height:.9;margin:10px 0 55px}.evidence{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.ev{border:1px solid #5a554b;padding:25px;min-height:180px}.ev b{font-size:9px;color:#a99e8a;letter-spacing:.15em}.ev h3{font-size:24px;margin:22px 0 12px}.ev p{font-size:11px;line-height:1.7;color:#aaa193}.request{margin-top:35px;border:1px solid #686156;background:#34312b;padding:28px;position:relative}.request h3{font-size:11px;color:#a99e8a;letter-spacing:.12em}.quote{font:clamp(28px,4vw,48px) "Special Elite";margin:15px 0 25px}.decision{font:21px Caveat;color:#bdad92}.mini-stamp{position:absolute;right:20px;top:20px;border:2px solid #b3544c;color:#b3544c;padding:7px;transform:rotate(7deg);font-size:9px}
+.final{min-height:90vh;background:var(--paper);display:grid;place-items:center;text-align:center;padding:120px 7vw;position:relative;overflow:hidden}.final:before{content:"CASE CLOSED";position:absolute;font:clamp(70px,15vw,220px) "Special Elite";color:var(--red);opacity:.05;transform:rotate(-7deg)}
+.final-inner{position:relative;z-index:2;max-width:850px}.final-stamp{display:inline-block;border:4px solid var(--red);color:var(--red);padding:13px 20px;transform:rotate(-6deg);letter-spacing:.15em}.final h2{font-size:clamp(60px,10vw,125px);line-height:.9;margin:25px 0}.final p{font-size:12px;line-height:1.9;color:#625b51}.final-note{font:25px Caveat;color:#6d5c49;margin-top:30px}
+footer{background:#25241f;color:#b5a994;padding:24px 7vw;display:flex;justify-content:space-between;font-size:8px;letter-spacing:.12em}
+.reveal{opacity:0;transform:translateY(20px);transition:.7s}.reveal.show{opacity:1;transform:none}
+@media(max-width:800px){.head,.letter-layout{display:block}.head p{margin-top:20px}.letter-intro{margin-bottom:50px}.cases,.evidence{grid-template-columns:1fr}.case:nth-child(n){transform:none}.hero-note{position:static;margin-top:35px}.subject{grid-template-columns:1fr}.section,.letter-section,.dark,.final{padding-left:5vw;padding-right:5vw}}
+@media(max-width:520px){h1{font-size:18vw}.letter{font-size:22px}footer{display:block;line-height:2}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<nav><div>T-001 / CONFIDENTIAL</div><a href="#cases">OPEN CASES ↓</a></nav>
+
+<section class="hero">
+<div class="tab">CASE FILE / 03.10.2026</div>
+<div class="sheet reveal">
+<div class="kicker">PRIVATE INVESTIGATION REPORT · CASE FILE: T-001</div>
+<h1>SUBJECT:<br>TANISHQ</h1>
+<div class="subject">
+<b>STATUS</b><span class="status">GIRLFRIEND ATTACHED</span>
+<b>CASE TYPE</b><span>LONG-TERM AFFECTION / MILD ANNOYANCE</span>
+<b>INVESTIGATOR</b><span>HIS GIRLFRIEND. OBVIOUSLY.</span>
+</div>
+<div class="stamp">CLASSIFIED</div><br>
+<button class="open" onclick="document.querySelector('#cases').scrollIntoView({behavior:'smooth'})">OPEN CASE FILE →</button>
+<div class="hero-note hand">i did all this for you btw.</div>
+</div>
+</section>
+
+<section class="section" id="cases">
+<div class="wrap">
+<div class="head reveal"><div><div class="kicker">EVIDENCE LOG / 01—06</div><h2>The investigation begins.</h2></div><p>Each file contains highly confidential information gathered over a completely unnecessary amount of time.</p></div>
+<div class="cases">
+
+<article class="case reveal"><div class="case-num">CASE 01</div><h3>WHY IS HE ALWAYS AT A CAFÉ?</h3><p class="tease">A suspiciously high number of café sightings have been reported.</p><div class="answer">What started as “let's just go somewhere for a bit” somehow becomes a café, a snack, another café and an unnecessarily long conversation. Investigation suggests the subject simply enjoys going out with his favourite person. <span class="note">fair enough.</span></div><div class="tag">evidence: excessive café visits</div></article>
+
+<article class="case reveal"><div class="case-num">CASE 02</div><h3>THE PERFUME COLLECTION</h3><p class="tease">Investigators have confirmed that smelling good is apparently a serious operation.</p><div class="answer">Multiple fragrances. Multiple opinions. Somehow every bottle is “different.” Subject appears to take perfume selection very seriously. Final finding: he smells good and unfortunately knows it. <span class="note">suspicious.</span></div><div class="tag">status: smells expensive</div></article>
+
+<article class="case reveal"><div class="case-num">CASE 03</div><h3>THE “3 PEG ALLOW KRDE PLEASE” INCIDENTS</h3><p class="tease">A recurring request has been submitted to the girlfriend approval board.</p><div class="answer">Official application received: <b>“Aaj 3 peg allow krde please.”</b><br><br>Supporting argument: “please.”<br>Additional documentation: none.<br>Decision: under girlfriend review.<br><span class="note">Sir, this is not a visa office.</span></div><div class="tag">request: pending</div></article>
+
+<article class="case reveal"><div class="case-num">CASE 04</div><h3>PROTECTIVE BEHAVIOUR</h3><p class="tease">Subject repeatedly demonstrates suspicious levels of caring.</p><div class="answer">Evidence includes checking in, taking care, being protective and doing things for his girlfriend without necessarily making a big deal about them. Investigators have reluctantly concluded that this is actually very sweet. <span class="note">don't let him know we said that.</span></div><div class="tag">finding: guilty of caring</div></article>
+
+<article class="case reveal"><div class="case-num">CASE 05</div><h3>WHY DOES HIS GIRLFRIEND LIKE HIM THIS MUCH?</h3><p class="tease">This is the most difficult case in the entire file.</p><div class="answer">After reviewing the evidence — the silly things, the little outings, the caring, the laughter, the annoying moments, the arguments, the memories and everything in between — investigators have failed to find a reasonable explanation. <span class="note">she just really loves him.</span></div><div class="tag">evidence: overwhelming</div></article>
+
+<article class="case reveal"><div class="case-num">CASE 06</div><h3>THE HEALTH REMINDER FILE</h3><p class="tease">Subject has repeatedly advised girlfriend to be healthy.</p><div class="answer">Subject appears deeply committed to the concept of “being healthy,” while also participating in café plans. Investigators are currently studying this contradiction. No conclusion has been reached. <span class="note">interesting.</span></div><div class="tag">contradiction noted</div></article>
+
+</div></div></section>
+
+<section class="letter-section" id="letter">
+<div class="wrap letter-layout">
+<div class="letter-intro reveal"><div class="kicker">EVIDENCE ITEM / PERSONAL LETTER</div><h2>The evidence that actually matters.</h2><p>This document contains personal statements from the investigator. It is not to be edited, corrected, or forwarded to anyone. Especially not your friends.</p><div class="stamp">PRIVATE</div></div>
+<div class="letter-card reveal"><div class="margin m1">read this properly pls.</div><div class="margin m2">okay don't judge my typing.</div><div class="letter">Happpyyyy Boyfriends Dayy baby. i love u so much and yes its not just for the sake but im writing you this letter because ofcourse even u deserve all the pampering love and that special day feeling from your best ever girlfriend. I have always loved the silly things we do, all the fun part and cute little chotu chotu outings we do , AND ofcourse merko bhi nahi pasand how we have been fighting and obviously how u speak to me i dont like that. Meri bhi mistakes hoti hai but i also expect u to see them from my way at times too which you dont . Okay keeping all this aside its happy happy dayso merko spoil ni karna . So just so you know i love how protective u are for me, how you love me, how you take care meri and everything you have done mere liye. i cant ever ever forget that . i loveeeee u so so much.</div></div>
+</div></section>
+
+<section class="dark">
+<div class="wrap">
+<div class="kicker">ADDITIONAL EVIDENCE / CLASSIFIED</div><h2>Other suspicious behaviour.</h2>
+<div class="evidence">
+<div class="ev reveal"><b>EVIDENCE 07</b><h3>Random plans</h3><p>Subject has a concerning ability to turn a normal day into “chal bahar chalte hain.”</p></div>
+<div class="ev reveal"><b>EVIDENCE 08</b><h3>Chotu chotu outings</h3><p>Repeatedly described as “nothing much.” Investigators disagree.</p></div>
+<div class="ev reveal"><b>EVIDENCE 09</b><h3>Being annoying</h3><p>Subject has demonstrated professional-level annoying behaviour. Somehow remains loved.</p></div>
+</div>
+<div class="request reveal"><div class="mini-stamp">URGENT REQUEST</div><h3>GIRLFRIEND APPROVAL BOARD / REQUEST #003</h3><div class="quote">“Aaj 3 peg allow krde please.”</div><div class="decision">Decision: application has been received. The board is currently pretending to think about it.</div></div>
+</div></section>
+
+<section class="final">
+<div class="final-inner reveal">
+<div class="kicker">FINAL REPORT / CASE T-001</div><div class="final-stamp">CASE CLOSED</div>
+<h2>SUBJECT<br>EXTREMELY LOVED.</h2>
+<p>After extensive investigation, countless pieces of evidence, several café sightings, multiple perfume-related observations and a suspicious number of 3-peg requests, the investigation has reached one unavoidable conclusion:</p>
+<p style="font-family:'Special Elite';font-size:20px;color:#403b33">the subject is extremely loved.</p>
+<div class="final-note">and unfortunately for you, you're stuck with your investigator.</div>
+</div></section>
+
+<footer><span>CASE FILE: T-001 · 03.10.2026</span><span>PROPERTY OF HIS GIRLFRIEND</span></footer>
+<script>
+const p=document.getElementById('progress');
+addEventListener('scroll',()=>{let m=document.documentElement.scrollHeight-innerHeight;p.style.width=(scrollY/m*100)+'%'});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+document.querySelectorAll('.case').forEach(c=>c.addEventListener('click',()=>c.classList.toggle('open')));
+</script>
+</body>
+</html>
